@@ -10,4 +10,4 @@ The idea is to rewrite an existing php app in svelte but do it on a route-by-rou
 
 ## Getting started
 
-`make` will start the PHP app on https://localhost
+`make` will start the legacy app (PHP) on http://localhost and the next app (Svelte) on http://localhost:3000/svelte.
