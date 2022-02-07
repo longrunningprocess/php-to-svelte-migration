@@ -2,6 +2,38 @@ services:
   legacy:
     image: php:apache
     ports:
-      - 80:80
+      - 81:80
     volumes:
       - ./legacy:/var/www/html
+
+  proxy:
+    image: caddy
+    ports:
+      - 80:80
+    depends_on:
+      - legacy
+      - next
+    environment:
+      - LEGACY_APP=legacy:80
+      - NEXT_APP=next:3000
+    restart: unless-stopped
+    volumes:
+      - ./proxy:/etc/caddy
+      - caddy-data:/data
+      - caddy-config:/config
+
+  next:
+    image: node
+    ports:
+      - 82:3000
+    volumes:
+      # https://github.com/sveltejs/kit/tree/master/packages/adapter-node#deploying
+      - ./next/package.json:/app/package.json
+      - ./next/node_modules:/app/node_modules
+      - ./next/build:/app/
+    command: node app/index.js
+
+
+volumes:
+  caddy-data:
+  caddy-config:

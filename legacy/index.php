@@ -1,3 +1,16 @@
 <h1>Legacy app homepage</h1>
 
-<a href=page-2.php>Page 2</a>
+<nav>
+    <a href=//localhost:81/shiny.php>direct link to shiny on the legacy app</a>
+    <a href=//localhost:82/shiny>direct link to shiny on the next app</a>
+    <a href=//localhost:80/shiny>link to shiny via proxy</a>
+</nav>
+
+<style>
+    nav {
+        display: flex;
+        flex-direction: column;
+
+        line-height: 1.5;
+    }
+</style>

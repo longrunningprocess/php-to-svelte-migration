@@ -1,0 +1,12 @@
+# https://caddyserver.com/docs/caddyfile
+http://localhost:80 {
+    @next_app_paths {
+        path /_app/*
+        path /shiny
+    }
+    route @next_app_paths {
+	    reverse_proxy {$NEXT_APP}
+    }
+
+	reverse_proxy {$LEGACY_APP}
+}

@@ -1,23 +1,7 @@
-import cookie from 'cookie';
-import { v4 as uuid } from '@lukeed/uuid';
-
-export const handle = async ({ event, resolve }) => {
-	const cookies = cookie.parse(event.request.headers.get('cookie') || '');
-	event.locals.userid = cookies.userid || uuid();
-
-	const response = await resolve(event);
-
-	if (!cookies.userid) {
-		// if this is the first time the user has visited this app,
-		// set a cookie so that we recognise them when they return
-		response.headers.set(
-			'set-cookie',
-			cookie.serialize('userid', event.locals.userid, {
-				path: '/',
-				httpOnly: true
-			})
-		);
+/** @type {import('@sveltejs/kit').GetSession} */
+export function getSession(event) {
+	// as a reminder to the strangeness of the Headers API:  https://developer.mozilla.org/en-US/docs/Web/API/Headers
+	return {
+		headers : Object.fromEntries(event.request.headers.entries())
 	}
-
-	return response;
-};
+}

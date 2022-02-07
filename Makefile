@@ -1,11 +1,7 @@
-start: legacy
+start:
+	docker-compose up -d
 
-.PHONY: legacy
-legacy:
-	docker-compose up -d legacy
-
-.PHONY: next
-next:
+dev:
 	npm --prefix next install
 	npm --prefix next run dev
 
