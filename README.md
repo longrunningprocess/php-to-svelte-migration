@@ -25,6 +25,7 @@ The idea is to add two more containers, one for a proxy and a another for the ne
 * No need to touch the PHP app
 * The next app can be written in total isolation
 * Routes will look exactly the same as they did in the legacy app
+* no CORS challenges due to same origin
 
 ### Cons
 * Requires additional containers
