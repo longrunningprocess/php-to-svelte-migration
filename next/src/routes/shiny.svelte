@@ -1,5 +1,12 @@
 <script>
 import { session } from '$app/stores'
+import { getData } from '$lib/data'
+
+let data = []
+
+async function load() {
+	data = await getData()
+}
 </script>
 
 <svelte:head>
@@ -10,3 +17,7 @@ import { session } from '$app/stores'
 
 <h2>session</h2>
 <pre>{ JSON.stringify($session, null, 2) }</pre>
+
+<h2>data</h2>
+<button on:click={load}>load data from legacy app</button>
+<pre>{ JSON.stringify(data, null, 2) }</pre>
