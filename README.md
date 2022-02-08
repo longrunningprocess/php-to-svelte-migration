@@ -3,7 +3,7 @@
 The idea is to rewrite an existing php app in svelte but do it on a route-by-route basis.  One constraint is that the new pages should have the same route as the old pages.
 
 ## Possible approaches
-1. proxy that determines which container to route a request to
+1. proxy
 2. apache mod_rewrite
 3. php route handler calls svelte container and passes repsonse back to client
 
@@ -41,7 +41,7 @@ The idea is to build the next app as a bundled SPA and drop its dist into a diff
 
 ## Option 3: php route handler calls svelte container and passes repsonse back to client
 
-I'm not sure this is even a viable option since the existing routing of the legacy app is still in the client and would already have been bundles a delivered to the client.
+I'm not sure this is even a viable option since the existing routing of the legacy app is still in the client and would already have been bundled and delivered to the client.
 
 ### Pros
 
