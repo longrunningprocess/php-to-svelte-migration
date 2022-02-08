@@ -8,7 +8,7 @@ The idea is to rewrite an existing php app in svelte but do it on a route-by-rou
 3. php route handler calls svelte container and passes repsonse back to client
 
 ## Getting started
-`make` will start a proxy on http://localhost, a legacy app (PHP) on http://localhost:81 and a next app (Svelte) on http://localhost:82.  `make dev` will spin up a local development environment for the next app (Svelte).
+`make` will start a proxy on http://localhost, a legacy app (PHP) on http://localhost:81 and a next app (Svelte) on http://localhost:82.  `make dev` will spin up a local development environment for the next app (Svelte) on http://localhost:3000.
 
 
 ## Stopping the apps
