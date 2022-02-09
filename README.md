@@ -19,7 +19,7 @@ The idea is to rewrite an existing php app in svelte but do it on a route-by-rou
 
 The idea is to add two more containers, one for a proxy and a another for the next app.  The proxy will receive all incoming requests and have rules to determine whether to route a request the legacy app or the next app.  This will all be transparent to the end user, i.e., the URL is not changed at all.
 
-> REMINDER: migrated routes must be disabled in existing client SPA
+> REMINDER: existing client SPA's _might_ have routes that will need to be disabled.
 
 ### Pros
 * No need to touch the PHP app
@@ -35,7 +35,7 @@ The idea is to add two more containers, one for a proxy and a another for the ne
 
 The idea is to build the next app as a bundled SPA and drop its dist into a different directy on the existing app.  Rules will then be written into the web server, i.e., mod_rewrite, that will serve the approprite resources from the appropriate directory, i.e., legacy requests from the legacy folder and migrated requests from the next app's folder.
 
-> REMINDER: migrated routes must be disabled in existing client SPA
+> REMINDER: existing client SPA's _might_ have routes that will need to be disabled.
 
 ### Pros
 * Operates within the same container as the existing PHP app
@@ -46,7 +46,7 @@ The idea is to build the next app as a bundled SPA and drop its dist into a diff
 
 ## Option 3: php route handler calls svelte container and passes repsonse back to client
 
-I'm not sure this is even a viable option since the existing routing of the legacy app is still in the client and would already have been bundled and delivered to the client.
+I'm not sure this is even a viable option since _some_ of the existing routing of the legacy app is still in the client and would already have been bundled and delivered to the client.
 
 ### Pros
 
