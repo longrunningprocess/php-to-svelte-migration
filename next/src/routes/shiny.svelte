@@ -3,9 +3,14 @@ import { session } from '$app/stores'
 import { getData } from '$lib/data'
 
 let data = []
+let error = false
 
 async function load() {
-	data = await getData()
+	try {
+		data = await getData()
+	} catch (e){
+		error = e
+	}
 }
 </script>
 
@@ -20,4 +25,9 @@ async function load() {
 
 <h2>data</h2>
 <button on:click={load}>load data from legacy app</button>
-<pre>{ JSON.stringify(data, null, 2) }</pre>
+
+{#if data.length}
+	<pre>{ JSON.stringify(data, null, 2) }</pre>
+{:else if error}
+	<p>💣 {error} 💣</p>
+{/if}
