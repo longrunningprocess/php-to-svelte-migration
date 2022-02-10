@@ -23,7 +23,7 @@ services:
       - caddy-config:/config
 
   next:
-    image: node
+    image: node:alpine
     ports:
       - 82:3000
     volumes:
